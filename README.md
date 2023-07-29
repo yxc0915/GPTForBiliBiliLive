@@ -36,9 +36,7 @@ pip install  bilibili-api-python edge-tts
 
 MIT许可证。详情请参阅LICENSE文件。
 
-### 特别鸣谢
 
-[XzaiCloud/AI-Vtuber](https://github.com/XzaiCloud/AI-Vtuber)
 
 ```
 
