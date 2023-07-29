@@ -1,7 +1,9 @@
 # GPTForBiliBiliLive
 
 哔哩哔哩AI直播（使用ChatGPT）
+
 交流群：[303104111](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=CtyH-iI1JBO-jpRUFDrMgx9SZoM0ClTX&authKey=asxcHbxRLNCvJg%2FNo%2FOPsf%2FS7J6XycRaCfSot4bODF1XA7EdEptnCSy61cuabUCt&noverify=0&group_code=303104111)
+
 GPTForBiliBiliLive是一个由ChatGPT驱动的虚拟主播，可以在Bilibili直播中与观众实时互动。它使用自然语言处理和文本转语音技术生成对观众问题的回答。
 
 ### 运行环境
