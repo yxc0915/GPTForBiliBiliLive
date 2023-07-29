@@ -23,14 +23,12 @@ pip install  bilibili-api-python edge-tts
 
 ### 使用
 
-1. 在命令行中运行以下命令启动程序：
-
-```bash
-python main.py
-```
-
-2. 输入要连接的B站直播间编号。
-3. 按下`Enter`键开始监听弹幕流。
+1. 用文本编辑工具打开main.py文件。
+2. 在# ChatGPT API的URL和密钥中设置api链接（这个可以不改）和你的APIKey
+3. 按照您的意愿调整机器人的预设。
+4. 用Python运行main.py文件。
+5. 输入要连接的B站直播间编号。
+6. 按下`Enter`键开始监听弹幕流。
 
 当有观众发送弹幕消息时，机器人将自动生成回复并将其转换为语音。声音文件将被保存并立即播放。
 
@@ -40,4 +38,8 @@ MIT许可证。详情请参阅LICENSE文件。
 
 ### 特别鸣谢
 
-([XzaiCloud/AI-Vtuber: :octocat:AI Vtuber是一个由ChatterBot驱动的虚拟主播，可以在Bilibili直播中与观众实时互动。它使用自然语言处理和文本转语音技术生成对观众问题的回答。 (github.com)](https://github.com/XzaiCloud/AI-Vtuber))
+[XzaiCloud/AI-Vtuber](https://github.com/XzaiCloud/AI-Vtuber)
+
+```
+
+```
