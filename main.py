@@ -3,10 +3,14 @@ import requests
 import os
 from bilibili_api import live, sync
 
+#全部变量
+
 # ChatGPT API的URL和密钥
 bot_api_url = "https://openaiapi.elecho.top/v1/chat/completions" # openai的api链接
-bot_api_key = "YOUR_API_KEY" # 填写你的api-key
+bot_api_key = "your_api_key" # 填写你的api-key
 
+#Edgetts音色
+bot_voice = "zh-CN-XiaoyiNeural"
 # ChatGPT参数
 chatgpt_params = {
     "model": "gpt-3.5-turbo",
@@ -42,7 +46,8 @@ async def on_danmaku(event):
 
     # 使用Edge TTS生成回答的音频文件
     tts_text = answer.replace('"', '\\"')  # 转义引号
-    command = f'edge-tts --voice zh-CN-XiaoyiNeural --text "{tts_text}" --write-media response.mp3'
+    file_name = f'{dir_name}/response_{len(chatgpt_params["messages"])//2}.mp3'  # 文件名按照回复的顺序数字编号
+    command = f'edge-tts --voice {bot_voice} --text "{tts_text}" --write-media {file_name}'
     subprocess.run(command, shell=True)  # 执行命令行指令
 
     # 播放音频文件
