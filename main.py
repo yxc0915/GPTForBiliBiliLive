@@ -2,10 +2,17 @@ import subprocess
 import requests
 import os
 from bilibili_api import live, sync
+from playsound import playsound
+import datetime
+
+#全部变量
 
 # ChatGPT API的URL和密钥
 bot_api_url = "https://openaiapi.elecho.top/v1/chat/completions" # openai的api链接
-bot_api_key = "YOUR_API_KEY" # 填写你的api-key
+bot_api_key = "your_api_key" # 填写你的api-key
+
+#Edgetts音色
+bot_voice = "zh-CN-XiaoyiNeural"
 
 # ChatGPT参数
 chatgpt_params = {
@@ -17,9 +24,15 @@ chatgpt_params = {
     "stop": "\n"
 }
 
+# 创建以当前日期和时间为名称的目录
+now = datetime.datetime.now()
+dir_name = now.strftime('%Y%m%d_%H%M%S')
+os.makedirs(dir_name, exist_ok=True)
+
 # 连接Bilibili直播弹幕服务器
 room_id = int(input("请输入直播间编号: "))# 请勿修改，在CMD界面填写
 room = live.LiveDanmaku(room_id)
+
 
 @room.on("DANMU_MSG")
 async def on_danmaku(event):
@@ -42,14 +55,11 @@ async def on_danmaku(event):
 
     # 使用Edge TTS生成回答的音频文件
     tts_text = answer.replace('"', '\\"')  # 转义引号
-    command = f'edge-tts --voice zh-CN-XiaoyiNeural --text "{tts_text}" --write-media response.mp3'
+    file_name = f'{dir_name}/response_{len(chatgpt_params["messages"])//2}.mp3'  # 文件名按照回复的顺序数字编号
+    command = f'edge-tts --voice {bot_voice} --text "{tts_text}" --write-media {file_name}'
     subprocess.run(command, shell=True)  # 执行命令行指令
 
     # 播放音频文件
-    command = 'mpv.exe -vo null response.mp3'
-    subprocess.run(command, shell=True)  # 执行命令行指令
-
-    # 删除音频文件
-    os.remove("response.mp3")
+    playsound(file_name)
 
 sync(room.connect())  # 开始监听弹幕流
